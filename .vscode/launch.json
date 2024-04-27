@@ -1,0 +1,23 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python Debugger: Current File with Arguments",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      //   "args": "${command:pickArgs}"
+      "justMyCode": true,
+      "args": [
+        "--pdf_file",
+        "CIS_CentOS_Linux_7_Benchmark_v4.0.0.pdf",
+        "--out_file",
+        "CIS_CentOS_Linux_7_Benchmark_v4.0.0.csv"
+      ]
+    }
+  ]
+}

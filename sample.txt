@@ -1,0 +1,4 @@
+python3 cis_pdf_parser.py --pdf_file CIS_Microsoft_Windows_Server_2012_non-R2_Benchmark_v3.0.0_FINAL_UPDATE.pdf --out_file CIS_Microsoft_Windows_Server_2012_non-R2_Benchmark_v3.0.0.csv
+
+
+python3 cis_pdf_parser.py --pdf_file CIS_CentOS_Linux_7_Benchmark_v4.0.0.pdf --out_file CIS_CentOS_Linux_7_Benchmark_v4.0.0.csv
