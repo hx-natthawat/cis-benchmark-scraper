@@ -68,7 +68,9 @@ def main():
         if rerule is not None:
             CISName = rerule.group(0).strip().replace('\n','')
             logger.info("*** Document found name: {} ***".format(CISName))
-            if "Apache Tomcat 10" in CISName:
+            if "Apache Tomcat 8" in CISName:
+                pattern = "(\d+(?:\.\d.\d*)+)(.*?)(\(Automated\)|\(Manual\))"
+            elif "Apache Tomcat 10" in CISName:
                 pattern = "(\d+(?:\.\d.\d*)+)(.*?)(\(Automated\)|\(Manual\))"
             elif "Red Hat Enterprise Linux 7" in CISName:
                 pattern = "(\d+(?:\.\d.\d*)+)(.*?)(\(Automated\)|\(Manual\))"
