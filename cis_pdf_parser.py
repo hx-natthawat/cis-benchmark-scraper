@@ -69,7 +69,7 @@ def main():
             CISName = rerule.group(0).strip().replace('\n','')
             logger.info("*** Document found name: {} ***".format(CISName))
             if "Apache Tomcat 8" in CISName:
-                pattern = "(\d+(?:\.\d.\d*)+)(.*?)(\(Automated\)|\(Manual\))"
+                pattern = "(\d+(?:\.\d.\d*)+)(.*?)(\(Automated\)|\(Manual\)|\(Scored\)|\(Not Scored\))"
             elif "Apache Tomcat 10" in CISName:
                 pattern = "(\d+(?:\.\d.\d*)+)(.*?)(\(Automated\)|\(Manual\))"
             elif "Red Hat Enterprise Linux 7" in CISName:
@@ -137,8 +137,10 @@ def main():
                         rule = rerule.group()
                         rule_count += 1
                 except IndexError:
+                    # rule = ""
                     logger.info("*** Page does not contain a Rule Name ***")
                 except AttributeError:
+                    # rule = ""
                     logger.info("*** Page does not contain a Rule Name ***")
 
                 # Get Profile Applicability by splits as it is always between Profile App. and Description, faster than regex
@@ -148,6 +150,7 @@ def main():
                     level = re.sub("[^a-zA-Z0-9\\n-]+", " ", level)
                     level_count += 1
                 except IndexError:
+                    # level = ""
                     logger.info("*** Page does not contain Profile Levels ***")
 
                 # Get Description by splits as it is always between Description and Rationale, faster than regex
@@ -156,6 +159,7 @@ def main():
                     description = d_post.partition("Rationale")[0].strip()
                     description_count += 1
                 except IndexError:
+                    # description = ""
                     logger.info("*** Page does not contain Description ***")
 
                 # Get Rationale by splits as it is always between Rationale and Audit, faster than regex
@@ -164,6 +168,7 @@ def main():
                     rat = rat_post.partition("Audit:")[0].strip()
                     rat_count += 1
                 except IndexError:
+                    # rat = ""
                     logger.info("*** Page does not contain Rationale ***")
 
                 # Get Audit by splits as it is always between Audit and Remediation, faster than regex
@@ -172,6 +177,7 @@ def main():
                     audit = a_post.partition("Remediation")[0].strip()
                     acnt += 1
                 except IndexError:
+                    # audit = ""
                     logger.info("*** Page does not contain Audit ***")
 
                 # Get Remediation by splits as it is always between Remediation and Default value, faster than regex
@@ -180,6 +186,7 @@ def main():
                     rem = rem_post.partition("Default Value:")[0].strip()
                     rem_count += 1
                 except IndexError:
+                    rem = ""
                     logger.info("*** Page does not contain Remediation ***")
 
                 # Get Default Value by splits as WHEN PRESENT it is always between Default Value and CIS Controls,
@@ -208,20 +215,23 @@ def main():
                     logger.info("*** Page does not contain CIS Controls ***")
                     
                 # For debugging
-                if page == 158:
-                    logger.setLevel(logging.DEBUG)
-                    logger.debug("*** DEBUGGING ***")
-                    logger.debug("Page number : {}".format(page))
-                    logger.debug("Page text : {}".format(doc.load_page(page).get_text("text")))
-                    logger.debug("Pattern : {}".format(pattern))
-                    logger.debug("Rule : {}".format(rule))
-                    logger.debug("Level : {}".format(level))
-                    logger.debug("Description : {}".format(description))
-                    logger.debug("Rationale : {}".format(rat))
-                    logger.debug("Audit : {}".format(audit))
-                    logger.debug("Remediation : {}".format(rem))
-                    logger.debug("Default Value : {}".format(defval))
-                    logger.debug("CIS Controls : {}".format(cis))
+                if page == 11:
+                    try:
+                        logger.setLevel(logging.DEBUG)
+                        logger.debug("*** DEBUGGING ***")
+                        logger.debug("Page number : {}".format(page))
+                        logger.debug("Page text : {}".format(doc.load_page(page).get_text("text")))
+                        logger.debug("Pattern : {}".format(pattern))
+                        # logger.debug("Rule : {}".format(rule))
+                        logger.debug("Level : {}".format(level))
+                        logger.debug("Description : {}".format(description))
+                        logger.debug("Rationale : {}".format(rat))
+                        logger.debug("Audit : {}".format(audit))
+                        logger.debug("Remediation : {}".format(rem))
+                        logger.debug("Default Value : {}".format(defval))
+                        logger.debug("CIS Controls : {}".format(cis))
+                    except:
+                        logger.error("Error in debugging")
 
                 # We only write to csv if a parsed rule is fully assembled
                 if rule_count:

@@ -11,12 +11,12 @@
       "program": "${file}",
       "console": "integratedTerminal",
       //   "args": "${command:pickArgs}"
-      "justMyCode": true,
+      // "justMyCode": true,
       "args": [
         "--pdf_file",
-        "CIS_CentOS_Linux_7_Benchmark_v4.0.0.pdf",
+        "CIS_Apache_Tomcat_8_Benchmark_v1.1.0.pdf",
         "--out_file",
-        "CIS_CentOS_Linux_7_Benchmark_v4.0.0.csv"
+        "CIS_Apache_Tomcat_8_Benchmark_v1.1.0.csv"
       ]
     }
   ]
