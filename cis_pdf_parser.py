@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import fitz
+import pymupdf
 import csv
 import re
 import logging
@@ -57,7 +57,7 @@ def main():
         sys.exit(1)
 
     # Open PDF File
-    doc = fitz.open(args.pdf_file)
+    doc = pymupdf.open(args.pdf_file)
 
     # Get CIS Type from the name of the document in the cover page as it doesn't appear in the metadata
     coverPageText = doc.load_page(0).get_text("text")
@@ -77,6 +77,8 @@ def main():
             elif "Debian Linux 11" in CISName:
                 pattern = "(\d+(?:\.\d.\d*)+)(.*?)(\(Automated\)|\(Manual\))"
             elif "CentOS Linux 7" in CISName:
+                pattern = "(\d+(?:\.\d.\d*)+)(.*?)(\(Automated\)|\(Manual\))"
+            elif "Ubuntu Linux 22.04" in CISName:
                 pattern = "(\d+(?:\.\d.\d*)+)(.*?)(\(Automated\)|\(Manual\))"
             elif "Microsoft Windows Server 2012" in CISName:
                 pattern = "(\d+(?:\.\d+)+)\s\(((L[12])|(NG))\)(.*?)(\(Automated\)|\(Manual\))"
@@ -214,7 +216,7 @@ def main():
                     cis = ""
                     logger.info("*** Page does not contain CIS Controls ***")
                     
-                # For debugging
+                # [DEBUGGING ONLY]
                 if page == 11:
                     try:
                         logger.setLevel(logging.DEBUG)
