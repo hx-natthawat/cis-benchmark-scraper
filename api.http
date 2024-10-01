@@ -1,0 +1,21 @@
+curl -X POST -F "file=@/Users/tonchanaprompunjai/Desktop/git/gsb/cis-benchmark-scraper/CIS_Ubuntu_Linux_18.04_LTS_Benchmark_v2.2.0.pdf" http://localhost:5000/parse --output output.csv
+
+
+
+####
+curl -X POST -H "Content-Type: multipart/form-data" -F "file=@/Users/tonchanaprompunjai/Desktop/git/gsb/cis-benchmark-scraper/CIS_Ubuntu_Linux_18.04_LTS_Benchmark_v2.2.0.pdf" http://localhost:5000/parse --output output.csv
+
+####
+
+POST http://localhost:5000/parse
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="CIS_Ubuntu_Linux_18.04_LTS_Benchmark_v2.2.0.pdf"
+Content-Type: application/pdf
+
+< ./Users/tonchanaprompunjai/Desktop/git/gsb/cis-benchmark-scraper/CIS_Ubuntu_Linux_18.04_LTS_Benchmark_v2.2.0.pdf
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+###

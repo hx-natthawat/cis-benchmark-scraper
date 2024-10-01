@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIS Benchmark Parser</title>
+</head>
+<body>
+    <h2>Upload CIS Benchmark PDF</h2>
+    <form action="http://localhost:5000/parse" method="post" enctype="multipart/form-data">
+        <label for="file-upload">Choose a PDF file:</label>
+        <input type="file" id="file-upload" name="file" accept=".pdf" aria-label="Upload CIS Benchmark PDF">
+        <input type="submit" value="Upload and Parse" aria-label="Submit form to parse PDF">
+    </form>
+</body>
+</html>
