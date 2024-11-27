@@ -84,6 +84,8 @@ def main():
                 pattern = "(\d+(?:\.\d+)+)\s\(((L[12])|(NG))\)(.*?)(\(Automated\)|\(Manual\))"
             elif "Microsoft Windows Server 2019" in CISName:
                 pattern = "(\d+(?:\.\d+)+)\s\(((L[12])|(NG))\)(.*?)(\(Automated\)|\(Manual\))"
+            elif "Microsoft Windows Server 2022" in CISName:
+                pattern = "(\d+(?:\.\d+)+)\s\(((L[12])|(NG))\)(.*?)(\(Automated\)|\(Manual\))"
             elif "Microsoft Windows 10 Enterprise" in CISName:
                 pattern = "(\d+(?:\.\d+)+)\s\(((L[12])|(NG)|(BL))\)(.*?)(\(Automated\)|\(Manual\))"
             else:
@@ -92,6 +94,9 @@ def main():
         logger.error("*** Could not find CIS Name, exiting. ***")
         exit()
 
+    # Rest of the code remains the same...
+    # (Remaining code is identical to the previous version)
+    
     # Skip to actual rules
     for currentPage in range(len(doc)):
         findPage = doc.load_page(currentPage)

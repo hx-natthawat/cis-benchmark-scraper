@@ -1,161 +1,84 @@
 # CIS Benchmark PDF Parser
 
-## 🔍 Overview
+## Overview
 
-A Python utility for transforming CIS (Center for Internet Security) Benchmark PDFs into structured, machine-readable CSV formats, addressing the limitation of PDFs being the sole distribution method.
+A Python utility to parse CIS (Center for Internet Security) Benchmark PDFs and convert their content into a structured CSV format. This tool helps security professionals and system administrators easily extract and analyze CIS benchmark rules.
 
-## 🚀 Key Features
+## Features
 
-- 📄 PDF to CSV conversion
-- 🔒 Comprehensive benchmark data extraction
-- 🧩 Flexible parsing for various CIS benchmark documents
+- Supports multiple CIS Benchmark types:
+  - Windows Server 2012/2019
+  - Windows 10 Enterprise
+  - Linux distributions (RHEL, CentOS, Ubuntu, Debian)
+  - Apache Tomcat 8/10
+- Extracts comprehensive rule information:
+  - Rule number
+  - Profile Applicability
+  - Description
+  - Rationale
+  - Audit instructions
+  - Remediation steps
+  - Default values
+  - CIS Controls
 
-## 📋 Prerequisites
-
-### System Requirements
+## Requirements
 
 - Python 3.8+
-- pip package manager
+- pymupdf
+- Recommended: virtual environment
 
-### Dependencies
+## Installation
 
-- PyMuPDF (fitz)
-- csv
-- re
-- logging
-- argparse
-
-## 🛠 Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/your-username/cis-benchmark-pdf-parser.git
-cd cis-benchmark-pdf-parser
-```
-
-2. Create a virtual environment (recommended):
-
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
+1. Clone the repository
+2. Create a virtual environment (optional but recommended):
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
 3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Usage
 
 ```bash
-pip install -r requirements.txt
+python cis_pdf_parser.py --pdf_file path/to/benchmark.pdf --out_file output.csv [--log-level INFO]
 ```
 
-## 🖥 Usage
+### Arguments
 
-### Basic Usage
+- `--pdf_file`: Path to the CIS Benchmark PDF (Required)
+- `--out_file`: Path for the output CSV file (Required)
+- `--log-level`: Logging level (Optional, default: INFO)
 
-```bash
-python3 cis_pdf_parser.py --pdf_file <path_to_benchmark_pdf> --out_file <output_csv>
-```
+## Supported CIS Benchmark Types
 
-### Command-Line Options
+- Apache Tomcat 8/10
+- Red Hat Enterprise Linux 7
+- Debian Linux 11
+- CentOS Linux 7
+- Ubuntu Linux 22.04
+- Microsoft Windows Server 2012/2019
+- Microsoft Windows 10 Enterprise
 
-```
-$ python3 cis_pdf_parser.py --help
-usage: cis_pdf_parser.py [-h] --pdf_file PDF_FILE --out_file OUT_FILE [-l LOG_LEVEL]
+## Logging
 
-Parses CIS Benchmark PDF content into CSV Format
+The parser uses Python's logging module. Log levels include:
 
-optional arguments:
-  -h, --help            show this help message and exit
-  --pdf_file PDF_FILE   PDF File to parse
-  --out_file OUT_FILE   Output file in .csv format
-  -l LOG_LEVEL, --log-level LOG_LEVEL
-                        Set log level (DEBUG, INFO, etc). Default to INFO
-```
+- DEBUG: Detailed diagnostic information
+- INFO: General information about parsing progress
+- WARNING: Potential issues that don't prevent parsing
+- ERROR: Serious problems that might interrupt parsing
 
-### Example
+## Contributing
 
-```bash
-python3 cis_pdf_parser.py \
-    --pdf_file CIS_Red_Hat_Enterprise_Linux_7_Benchmark_v3.1.1.pdf \
-    --out_file rhel_7_controls.csv
-```
+Please read `CONTRIBUTING.md` for details on our code of conduct and the process for submitting pull requests.
 
-## 📊 Output Format
+## License
 
-The parser extracts the following fields:
+This project is licensed under the terms specified in the `LICENSE` file.
 
-- Rule
-- Profile Applicability
-- Description
-- Rationale
-- Audit
-- Remediation
-- CIS Controls
+## Disclaimer
 
-## 🧪 Compatibility
-
-**Tested Benchmark Versions:**
-
-- CIS Oracle Linux 7 Benchmark v3.1.1
-- CIS Red Hat Enterprise Linux 8 Benchmark v1.0.1
-- CIS Red Hat Enterprise Linux 7 Benchmark v3.1.1
-
-## 🎯 Use Cases
-
-1. **Enhanced Security Assessment**
-
-   - Augment security tool outputs with detailed benchmark information
-   - Extract comprehensive control details not typically available
-
-2. **Automation**
-
-   - Automate PDF benchmark conversion
-   - Integrate with security assessment workflows
-
-3. **Data Interoperability**
-   - Generate CSV files for further processing
-   - Enable cross-platform benchmark analysis
-
-## 🚧 Roadmap & TODO
-
-### Immediate Improvements
-
-- [ ] Implement robust error handling
-- [ ] Expand PDF format support
-- [ ] Develop comprehensive unit tests
-- [ ] Create flexible configuration management
-
-### Future Enhancements
-
-- [ ] Multi-language PDF support
-- [ ] Performance optimization
-- [ ] Advanced logging mechanisms
-- [ ] Docker containerization
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines.
-
-## 🔒 Security
-
-For security issues, please refer to [CONTRIBUTING.md](CONTRIBUTING.md#security-issue-notifications)
-
-## 📜 License
-
-MIT-0 License. See [LICENSE](LICENSE) file for details.
-
-## 👥 Contributors
-
-### Original Authors
-
-- David Bailey, [dbawssec@amazon.com](mailto:dbawssec@amazon.com)
-- ThibautB, [thibon](https://github.com/thibon)
-
-### Project Maintainers
-
-- Natthawat B, [hx-natthawat](https://github.com/hx-natthawat)
+This tool is not officially affiliated with the Center for Internet Security. Always refer to the original CIS Benchmark documents for the most accurate and up-to-date information.
