@@ -7,7 +7,7 @@ A Python utility to parse CIS (Center for Internet Security) Benchmark PDFs and 
 ## Features
 
 - Supports multiple CIS Benchmark types:
-  - Windows Server 2012/2019
+  - Windows Server 2012/2019/2022
   - Windows 10 Enterprise
   - Linux distributions (RHEL, CentOS, Ubuntu, Debian)
   - Apache Tomcat 8/10
@@ -59,7 +59,7 @@ python cis_pdf_parser.py --pdf_file path/to/benchmark.pdf --out_file output.csv 
 - Debian Linux 11
 - CentOS Linux 7
 - Ubuntu Linux 22.04
-- Microsoft Windows Server 2012/2019
+- Microsoft Windows Server 2012/2019/2022
 - Microsoft Windows 10 Enterprise
 
 ## Logging

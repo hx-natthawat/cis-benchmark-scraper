@@ -1,43 +1,20 @@
 # Project TODO List
 
-## Short-term Goals
+## Completed Tasks
 
-- [x] Implement basic PDF parsing functionality
-- [x] Create unit test suite
-- [ ] Add more comprehensive error handling
-- [ ] Implement full parsing logic
-- [ ] Add support for more benchmark types
-- [ ] Create integration tests with sample PDFs
+- [x] Add support for Microsoft Windows Server 2022 CIS Benchmark parsing
+- [x] Implement regex pattern for Windows Server 2022 benchmark extraction
 
-## Medium-term Goals
+## Pending Tasks
 
-- [ ] Implement logging to file
-- [ ] Add command-line option for custom log file
-- [ ] Create documentation for supported benchmark types
-- [ ] Develop performance optimization strategies
+- [ ] Improve error handling for unsupported PDF formats
+- [ ] Add more comprehensive logging for parsing edge cases
+- [ ] Create unit tests for newly added Windows Server 2022 parsing logic
+- [ ] Implement additional CIS Benchmark PDF support (if needed)
+- [ ] Optimize regex patterns for more robust parsing
+- [ ] Add command-line option to specify custom regex patterns
+- [ ] Implement more detailed documentation on parsing logic
 
-## Long-term Goals
+## Future Improvements
 
-- [ ] Add support for parsing multiple PDFs in a single run
-- [ ] Create a web interface for PDF parsing
-- [ ] Implement advanced filtering and extraction options
-- [ ] Develop a plugin system for custom parsing rules
-
-## Potential Improvements
-
-- [ ] Add progress tracking for large PDF files
-- [ ] Implement parallel processing for multiple PDFs
-- [ ] Create a configuration file for parser settings
-- [ ] Develop a reporting mechanism for parsing results
-
-## Known Issues
-
-- [ ] Handling of complex PDF layouts
-- [ ] Performance with very large benchmark PDFs
-- [ ] Consistency across different benchmark document formats
-
-## Community Contributions
-
-- [ ] Create contribution guidelines
-- [ ] Set up issue and feature request tracking
-- [ ] Develop a roadmap for community involvement
+- [ ] Add support for more CIS Benchmark types
