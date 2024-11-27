@@ -1,26 +1,61 @@
-# cis_pdf_parser.py
+# CIS Benchmark PDF Parser
 
-cis_pdf_parser.py is a python script for parsing CIS Benchmark PDF files from the [Center for Internet Security](https://www.cisecurity.org/cis-benchmarks/) into a CSV file format. As of August 2021, all benchmarks are only published in PDF format, which limits their usability.
+## 🔍 Overview
 
-## Use Cases
+A Python utility for transforming CIS (Center for Internet Security) Benchmark PDFs into structured, machine-readable CSV formats, addressing the limitation of PDFs being the sole distribution method.
 
-This parser can be useful for the following use cases:
+## 🚀 Key Features
 
-- This script's Comma Separated Value (CSV) output can be used to enhance security assessment result output from popular industry security assessment tools, which do not always include the Rationale, Audit, Remediation, and CIS Controls fields found in the full PDF version of the benchmark.
-- This script can also be used to automate conversion of a CIS Benchmark PDF file upon each new version release, as other file formats are for CIS SecureSuite members only.
-- This script's output is simple to further parse by its nature of being comma separated values, and can be ingested by other scripts or processes, such as a process which maps each CIS Control category to the user's chosen operating system benchmarks.
+- 📄 PDF to CSV conversion
+- 🔒 Comprehensive benchmark data extraction
+- 🧩 Flexible parsing for various CIS benchmark documents
 
-## Setup
+## 📋 Prerequisites
 
-cis_pdf_parser.py is dependent upon python3, the fitz, csv, re, logging, and argparse modules, and the script expects a path to a CIS Benchmark .pdf file and a filename to output to.
+### System Requirements
 
-Run the following:
+- Python 3.8+
+- pip package manager
 
+### Dependencies
+
+- PyMuPDF (fitz)
+- csv
+- re
+- logging
+- argparse
+
+## 🛠 Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/cis-benchmark-pdf-parser.git
+cd cis-benchmark-pdf-parser
 ```
-$ pip install -r requirements.txt
+
+2. Create a virtual environment (recommended):
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
 ```
 
-## Usage
+3. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+## 🖥 Usage
+
+### Basic Usage
+
+```bash
+python3 cis_pdf_parser.py --pdf_file <path_to_benchmark_pdf> --out_file <output_csv>
+```
+
+### Command-Line Options
 
 ```
 $ python3 cis_pdf_parser.py --help
@@ -30,66 +65,97 @@ Parses CIS Benchmark PDF content into CSV Format
 
 optional arguments:
   -h, --help            show this help message and exit
-
-required arguments:
   --pdf_file PDF_FILE   PDF File to parse
   --out_file OUT_FILE   Output file in .csv format
   -l LOG_LEVEL, --log-level LOG_LEVEL
                         Set log level (DEBUG, INFO, etc). Default to INFO
 ```
 
-## Full Command Example:
+### Example
 
-```
-$ python3 cis_pdf_parser.py --pdf_file CIS_Red_Hat_Enterprise_Linux_7_Benchmark_v3.1.1.pdf --out_file rhel_7_controls.csv
-```
-
-## Output
-
-The script will parse each page and extract the information corresponding to the following fields:
-
-```
-Rule, Profile Applicability, Description, Rationale, Audit, Remediation, CIS Controls
+```bash
+python3 cis_pdf_parser.py \
+    --pdf_file CIS_Red_Hat_Enterprise_Linux_7_Benchmark_v3.1.1.pdf \
+    --out_file rhel_7_controls.csv
 ```
 
-## Testing Notes
+## 📊 Output Format
 
-**Tested against:**
+The parser extracts the following fields:
 
-- CIS_Oracle_Linux_7_Benchmark_v3.1.1
-- CIS_Red_Hat_Enterprise_Linux_8_Benchmark_v1.0.1
-- CIS_Red_Hat_Enterprise_Linux_7_Benchmark_v3.1.1
+- Rule
+- Profile Applicability
+- Description
+- Rationale
+- Audit
+- Remediation
+- CIS Controls
 
-You will need provide a copy of or download the latest CIS Benchmark files from the [Center for Internet Security](https://learn.cisecurity.org/benchmarks).
+## 🧪 Compatibility
 
-## TODO List
+**Tested Benchmark Versions:**
 
-- [ ] Implement more robust error handling for PDF parsing
-- [ ] Add support for additional PDF formats and CIS benchmark variations
-- [ ] Create comprehensive unit tests for parsing logic
-- [ ] Develop a more flexible configuration system
-- [ ] Improve logging and debugging capabilities
-- [ ] Add command-line option for specifying custom output columns
-- [ ] Create a Docker container for easier deployment
-- [ ] Implement performance optimizations for large PDF files
-- [ ] Add support for multi-language PDF benchmarks
-- [ ] Create detailed documentation on parsing methodology
+- CIS Oracle Linux 7 Benchmark v3.1.1
+- CIS Red Hat Enterprise Linux 8 Benchmark v1.0.1
+- CIS Red Hat Enterprise Linux 7 Benchmark v3.1.1
 
-## Security
+## 🎯 Use Cases
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+1. **Enhanced Security Assessment**
 
-## License
+   - Augment security tool outputs with detailed benchmark information
+   - Extract comprehensive control details not typically available
 
-This library is licensed under the MIT-0 License. See the LICENSE file.
+2. **Automation**
 
-## Contributors
+   - Automate PDF benchmark conversion
+   - Integrate with security assessment workflows
 
-Fork from:
+3. **Data Interoperability**
+   - Generate CSV files for further processing
+   - Enable cross-platform benchmark analysis
+
+## 🚧 Roadmap & TODO
+
+### Immediate Improvements
+
+- [ ] Implement robust error handling
+- [ ] Expand PDF format support
+- [ ] Develop comprehensive unit tests
+- [ ] Create flexible configuration management
+
+### Future Enhancements
+
+- [ ] Multi-language PDF support
+- [ ] Performance optimization
+- [ ] Advanced logging mechanisms
+- [ ] Docker containerization
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines.
+
+## 🔒 Security
+
+For security issues, please refer to [CONTRIBUTING.md](CONTRIBUTING.md#security-issue-notifications)
+
+## 📜 License
+
+MIT-0 License. See [LICENSE](LICENSE) file for details.
+
+## 👥 Contributors
+
+### Original Authors
 
 - David Bailey, [dbawssec@amazon.com](mailto:dbawssec@amazon.com)
 - ThibautB, [thibon](https://github.com/thibon)
 
-Modified by:
+### Project Maintainers
 
 - Natthawat B, [hx-natthawat](https://github.com/hx-natthawat)
