@@ -1,20 +1,21 @@
 # cis_pdf_parser.py
 
-cis_pdf_parser.py is a python script for parsing CIS Benchmark PDF files from the [Center for Internet Security](https://www.cisecurity.org/cis-benchmarks/) into a CSV file format. As of August 2021, all benchmarks are only published in PDF format, which limits their usability. 
+cis_pdf_parser.py is a python script for parsing CIS Benchmark PDF files from the [Center for Internet Security](https://www.cisecurity.org/cis-benchmarks/) into a CSV file format. As of August 2021, all benchmarks are only published in PDF format, which limits their usability.
 
 ## Use Cases
 
 This parser can be useful for the following use cases:
 
-* This script's Comma Separated Value (CSV) output can be used to enhance security assessment result output from popular industry security assessment tools, which do not always include the Rationale, Audit, Remediation, and CIS Controls fields found in the full PDF version of the benchmark.
-* This script can also be used to automate conversion of a CIS Benchmark PDF file upon each new version release, as other file formats are for CIS SecureSuite members only.
-* This script's output is simple to further parse by its nature of being comma separated values, and can be ingested by other scripts or processes, such as a process which maps each CIS Control category to the user's chosen operating system benchmarks.
+- This script's Comma Separated Value (CSV) output can be used to enhance security assessment result output from popular industry security assessment tools, which do not always include the Rationale, Audit, Remediation, and CIS Controls fields found in the full PDF version of the benchmark.
+- This script can also be used to automate conversion of a CIS Benchmark PDF file upon each new version release, as other file formats are for CIS SecureSuite members only.
+- This script's output is simple to further parse by its nature of being comma separated values, and can be ingested by other scripts or processes, such as a process which maps each CIS Control category to the user's chosen operating system benchmarks.
 
 ## Setup
 
 cis_pdf_parser.py is dependent upon python3, the fitz, csv, re, logging, and argparse modules, and the script expects a path to a CIS Benchmark .pdf file and a filename to output to.
 
 Run the following:
+
 ```
 $ pip install -r requirements.txt
 ```
@@ -55,11 +56,24 @@ Rule, Profile Applicability, Description, Rationale, Audit, Remediation, CIS Con
 
 **Tested against:**
 
-* CIS_Oracle_Linux_7_Benchmark_v3.1.1
-* CIS_Red_Hat_Enterprise_Linux_8_Benchmark_v1.0.1
-* CIS_Red_Hat_Enterprise_Linux_7_Benchmark_v3.1.1
+- CIS_Oracle_Linux_7_Benchmark_v3.1.1
+- CIS_Red_Hat_Enterprise_Linux_8_Benchmark_v1.0.1
+- CIS_Red_Hat_Enterprise_Linux_7_Benchmark_v3.1.1
 
 You will need provide a copy of or download the latest CIS Benchmark files from the [Center for Internet Security](https://learn.cisecurity.org/benchmarks).
+
+## TODO List
+
+- [ ] Implement more robust error handling for PDF parsing
+- [ ] Add support for additional PDF formats and CIS benchmark variations
+- [ ] Create comprehensive unit tests for parsing logic
+- [ ] Develop a more flexible configuration system
+- [ ] Improve logging and debugging capabilities
+- [ ] Add command-line option for specifying custom output columns
+- [ ] Create a Docker container for easier deployment
+- [ ] Implement performance optimizations for large PDF files
+- [ ] Add support for multi-language PDF benchmarks
+- [ ] Create detailed documentation on parsing methodology
 
 ## Security
 
@@ -71,5 +85,11 @@ This library is licensed under the MIT-0 License. See the LICENSE file.
 
 ## Contributors
 
-* David Bailey, [dbawssec@amazon.com](mailto:dbawssec@amazon.com)
-* ThibautB, [thibon](https://github.com/thibon)
+Fork from:
+
+- David Bailey, [dbawssec@amazon.com](mailto:dbawssec@amazon.com)
+- ThibautB, [thibon](https://github.com/thibon)
+
+Modified by:
+
+- Natthawat B, [hx-natthawat](https://github.com/hx-natthawat)
